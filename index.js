@@ -1,15 +1,28 @@
+const rectangle = require("./rectangle");
 var rect = require("./rectangle");
+var arnaudVar = require("./testArnaud");
 
 function solRect(l,b){
     console.log("solving rectangle with l = " + l + " and b = " + b);
-    if (l < 0 || b < 0) {
-        console.log("les dimensions du rectangles doivent etre supérieur à 0");
-    }
+    rect(l,b,(err,rectangle) => {
+        if (err) {
+            console.log("ERROR ", err.message);
+        }
+        else {
+            console.log("The area of the rectangle of dimension" + l + " " + b + "is" + rectangle.area());
+            console.log("The perimeter of the rectangle of dimension" + l + " " + b + "is" + rectangle.perimeter());
 
-    else{
-        console.log("the area of the rectangle is " + rect.area(l,b));
-        console.log("the perimeter of the rectangle is " + rect.perimeter(l,b));
-    }
+        }
+
+    });
+    console.log("ce truc est après le call du rectangle");
 }
 
-solRect(2,4);
+function arnaud(x, y){
+    console.log("appel de la fonction Arnaud");
+    arnaudVar(x,y, (x,y)=>{return x*y});
+}
+
+
+arnaud(2,3);
+//solRect(2,4);
